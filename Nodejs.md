@@ -140,5 +140,5 @@ writeFileSync:-
 writeFileSync ek function hai jo synchronous behavior run hota hai. writeFileSync function exists file me data write karne or new file create kar ke data write karne ke liye use hota hai.
 ```
  const fs = require("fs");
- fs.writeFileSync("input.txt", "and bad");
+ fs.writeFileSync("input.txt", "writeFileSync");
  ```
