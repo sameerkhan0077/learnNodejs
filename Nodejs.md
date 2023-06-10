@@ -105,7 +105,7 @@ prom.then(
   ```
 
 
-### ### 10. readFile and readFileSync me kya differences hain? Explain with example 
+### 10. readFile and readFileSync me kya differences hain? Explain with example 
  readFile:-
 readFile ak asynchronous file system run hota  h jo jo ki file ko read krne k ly use hota h isme filesystem module use hota h jo file ka path or encoding leta h file read krne k ly.
 ```
