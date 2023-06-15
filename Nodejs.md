@@ -10,12 +10,12 @@ nodejs javascript ka engien chrome V8 use krta h .
 ```
 ### 2. Nodejs and JavaScipt me kya difference hai?
 ```
-javascript-
-javasctipt client side language hai language h jiska use web page ko build script k ly kiya jata yhai ak oop language h jise browser me run kiya jata h java script sync programing k ly use hoti iska code line by line chlta h 
-Client-side applications ko  dynamically typed bnane k ly javascript ka use kiya jata h.
-Nodejs-
-Nodejs ki madad se javascript ke code ko browser k bhar run kiya ja skta h 
-server said development  me nodejs ko use kiya jata h .Nodejs me API create kar sakte hai
+|Nodejs |JavaScript|
+|:---------|:----------|
+|Nodejs server per run hoti hai | javascript browser per run hoti hai|
+|Nodejs se local machine se connect ho sakte hai | javascript client side language hai|
+|Nodejs se files create, read, write, update,delete kar sakte hai | javascript se webpages ko dynamic bena sakte hai|
+|Nodejs me API create kar sakte hai | javascript me API create nhi kar sakte|
 ```
 
 ### 3. Module kya hota hai ? Nodejs me module kitni trah se import kr skte hain ?
