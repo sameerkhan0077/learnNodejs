@@ -82,3 +82,82 @@ import asynchronous trike se  kam krta hai.
 import es6 ka hisa hai yhai module ka new version  hai.
 isme module load hone tk baki ka run hota rhta hai.
 ```
+### 7. Write difference between callbacks and promise?
+* promise :-
+promise ek object hota h jo asynchronous oprestion ko resolve ya reject
+ko deta h .yhai error ko heddal krne ya data ko print krane me madad krta h.Promises ko  three states me kr skte h.promise me response  ko handle  krene k ly .then ka use krte h to ak callback function leta h .error ko handle krne k ly .catch function ka use krte h jo ak parameter leta  h jiseme error ko dete h .
+1.Pending 
+2.Fulfilled 
+3.Rejected 
+```
+let prom = new Promise(function (reject, success) {
+  success();
+});
+
+prom.then(
+  function () {
+    console.log("Hello");
+  },
+  function () {
+    console.log("Error");
+  }
+) .catch(function (value) {
+    console.log(value);
+  });
+  ```
+* callback:-
+callback ak function hota h jo asynchronous programming ke bad run hota
+h.yhai as argument kisi function ko pass kiya jata hai jo callback function ke rup me run hota h.
+```
+const sayhello = ()=>{
+    console.log("hello")
+}
+
+function sum(a,b,callback){
+  setTimeout(() => {
+    callback();
+    console.log(a+b)
+   
+    
+  }, 2000);
+
+}
+sum(10,20,sayhello);
+console.log("hello sameer")
+```
+
+### 9. Question: Write a Node.js program that reads the contents of a text file, capitalizes the text, writes the modified content to a new file, prints the modified content on the console, renames the new file, and finally deletes the original file. Implement the solution using the fs module in Node.js.
+### Your program should perform the following steps:
+* Read the contents of a text file called "input.txt".
+* Convert the text to uppercase.
+* Write the modified content to a new file called "output.txt".
+* Print the modified content on the console.
+* Rename "output.txt" to "newfile.txt".
+* Delete the original file, "input.txt".
+* Implement the program in Node.js, ensuring error handling and appropriate logging of each step.
+```sql
+const readifl =fs.readFileSync("input.txt",{encoding:"utf-8"})
+const Convert = readifl.toUpperCase()
+const writefl = fs.writeFileSync("output.txt",readifl)
+console.log(writefl)
+const rename = fs.renameSync("output.txt","newfile.txt");
+const deletefl =fs.unlinkSync("input.txt")
+console.log(deletefl)
+```
+### 10. Print the last modified date of each file in a folder.
+```sql
+const mdfloder = function(folderName){
+ const fls = fs.stat(folderName,(err,fl)=>{
+    if(err){
+      console.log(err)
+    }else{
+      console.log(fl.mtime)
+    }
+
+  })
+
+}
+mdfloder("test");
+
+ ```
+
