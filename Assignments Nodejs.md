@@ -28,7 +28,7 @@ fs.mkdir("other", function(error,data){
 });
 ```
 ### 3. Write a Node.js program to create a new directory and then create a new file within that directory
-```
+```sql
 const fs = require("fs");
 let folderName = "createDir";
 if (!fs.existsSync(folderName)) {
