@@ -68,7 +68,7 @@ fs.readdir("createDir",(error,data)=>{
 })
 ```
 ### 6. What is the difference between require() and import in Node.js?
-*require:-
+* require:-
 ```
 require synchronous kam krta hai.
 require file ke pure path ko satring ki trah load krta hoga
@@ -76,7 +76,7 @@ require CommonJS module ko hisa  hai.
 require me module loaded hone tk baki ka code run nhi hota hai.
 ```
 
-*import:-
+* import:-
 ```
 import asynchronous trike se  kam krta hai.
 import es6 ka hisa hai yhai module ka new version  hai.
