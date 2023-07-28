@@ -1,0 +1,14 @@
+{
+  "name": "sms",
+  "version": "1.0.0",
+  "description": "we are creating this  package for  \u001b[Dexpress training",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sameer khan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
