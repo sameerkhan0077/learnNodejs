@@ -93,8 +93,12 @@ const  updateBulkteacherById =(req,res)=>{
 
 
 module.exports={
-    getAllTeacher,createTeacher,createteacherBulk,
-    getTeacherByID,updateTeacherById,deleteTeacherById,
+    getAllTeacher,
+    createTeacher,
+    createteacherBulk,
+    getTeacherByID,
+    updateTeacherById,
+    deleteTeacherById,
     updateBulkteacherById
 }
 
