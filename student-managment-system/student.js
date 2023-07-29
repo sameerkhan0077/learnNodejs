@@ -104,8 +104,12 @@ const updateBulkStudentsByID=(req,res)=>{
 
 
 module.exports={
-    getAllStudent,createStudent,
-    createStudentBulk,getStudentById,updateStudentById,
-    deleteStudentById,updateBulkStudentsByID
+    getAllStudent,
+        createStudent,
+    createStudentBulk,
+        getStudentById,
+        updateStudentById,
+    deleteStudentById,
+        updateBulkStudentsByID
 
 }
