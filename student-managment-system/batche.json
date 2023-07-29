@@ -1,0 +1,4 @@
+[{"id":1,"batchesName":"javascript","time":"7am","fee":3000},
+{"id":2,"batchesName":"java","time":"10am","fee":3000},
+{"id":3,"teacherName":"jaas","subject":"java"},
+{"id":4,"batchesName":"NodeJs","time":"9am","fee":5000}]
