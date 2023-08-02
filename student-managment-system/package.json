@@ -4,11 +4,12 @@
   "description": "we are creating this  package for  \u001b[Dexpress training",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "sameer khan",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
   }
 }

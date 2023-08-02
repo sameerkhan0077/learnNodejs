@@ -1,5 +1,5 @@
 const fs = require("fs");
-let  teachers=JSON.parse(fs.readFileSync("teacher.json","utf-8"));
+let  teachers=JSON.parse(fs.readFileSync("./data/teacher.json","utf-8"));
 
 let getAllTeacher =(req,res)=>{
     let response ={
@@ -93,12 +93,8 @@ const  updateBulkteacherById =(req,res)=>{
 
 
 module.exports={
-    getAllTeacher,
-    createTeacher,
-    createteacherBulk,
-    getTeacherByID,
-    updateTeacherById,
-    deleteTeacherById,
+    getAllTeacher,createTeacher,createteacherBulk,
+    getTeacherByID,updateTeacherById,deleteTeacherById,
     updateBulkteacherById
 }
 
