@@ -1,4 +1,7 @@
 const app = require("./app/app");
-app.listen("4000", "localhost", () => {
-    console.log("started done")
-  });
+const config = require("./config.js");
+const port = config.DEFAULT_PORT;
+
+app.listen("4004", "localhost", () => {
+  console.log(`server start`);
+});

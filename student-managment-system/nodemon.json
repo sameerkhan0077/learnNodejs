@@ -1,0 +1,4 @@
+{
+  "watch": ["config.env"],
+  "ext": "env"
+}

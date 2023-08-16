@@ -1,103 +1,89 @@
-const fs = require("fs");
-let  teachers=JSON.parse(fs.readFileSync("./data/teacher.json","utf-8"));
+const teacherModel = require("../db/model/teacher");
 
-let getAllTeacher =(req,res)=>{
-    let response ={
-        status:"success",
-        data:{
-            teachers
-        }
+// getTeacher
+async function getTeacher(req, res) {
+  try {
+    const teacher = await teacherModel.find();
+    if (teacher.length === 0) {
+      res.status(200).send({ data: "teacher not exits" });
+    } else {
+      res.status(200).send(teacher);
     }
-    res.status(200).json(response)
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 }
 
+// getTeacherByEmail
+async function getTeacherByEmail(req, resp) {
+  try {
+    const findTeacher = await teacherModel.find({ email: req.params.email });
+    resp.status(200).send(findTeacher);
+  } catch (error) {
+    resp.status(500).send(error.message);
+  }
+}
 
-const createTeacher = (req, res) => {
-    const body = req.body;
-    const id = teachers[teachers.length - 1].id + 1;
-    let obj = Object.assign({id:id},body);
-    teachers.push(obj);
-    
-    fs.writeFileSync("teacher.json", JSON.stringify(teachers), "utf-8");
-    res.send("Created");
-  };
-
-
- let createteacherBulk = (req,res)=>{
-    let teacherbody = req.body
-    for(teachers of teacherbody){
-        let id = teachers[teachers.length-1].id +1;
-        let  obj = Object.assign({id:id},teachers)
-        teachers.push(obj)
-
+// createStudent bulk and singal
+async function createTeacher(req, res) {
+  const teacherData = req.body;
+  if (teacherData.length > 0) {
+    for (let teacher of teacherData) {
+      try {
+        const teachers = new teacherModel(teacher);
+        await teachers.save();
+      } catch (error) {
+        res.status(500).send(error.message);
+      }
     }
-    fs.writeFileSync("teacher.json",JSON.stringify(teachers),'utf-8');
-    res.send("createing")
- }
-
- const getTeacherByID = (req,res)=>{
-    let  id=  +req.params.id;
-    let  teacher = teachers.filter((teacher)=>{
-       return teacher.id === id
-    })
-    if(!teacher|| teacher.length==0){
-        res.status(404).send({
-            status:"not found",
-            data:{}
-        })
+    res.status(200).send("Create teachers bulk");
+  } else {
+    try {
+      const teacher = new teacherModel(teacherData);
+      await teacher.save();
+      res.status(200).send("Create teacher");
+    } catch (error) {
+      res.status(500).send(error.message);
     }
-    res.status(200).send({
-        status:"success",
-        data:{
-            teacher
-        }
-    })
+  }
+}
+
+// updateTeacher
+async function updateTeacher(req, res) {
+  try {
+    const teacher = await teacherModel.updateOne(
+      { email: req.params.email },
+      { $set: req.body }
+    );
+
+    if (!teacher) {
+      res.status(404).send("Teacher not found");
+    } else if (teacher) {
+      res.status(202).send("Teacher updated successfully");
+    }
+  } catch (error) {
+    console.error("Error updating student:", error);
+  }
+}
+
+// deleteTeacherByEmail
+async function deleteTeacherByEmail(req, res) {
+  try {
+    const teacher = await teacherModel.deleteOne({ email: req.params.email });
+    if (teacher) {
+      res.status(202).send("Teacher deleted successfully");
+    } else {
+      res.status(404).send("Teacher not found");
+    }
+  } catch (error) {
+    console.error("Error deleting teacher:", error);
+  }
+}
+
+module.exports = {
+  getTeacher,
+  getTeacherByEmail,
+  createTeacher,
+  deleteTeacherByEmail,
+  updateTeacher,
 };
-
-
-let updateTeacherById =(req,res)=>{
-    let id = +req.params.id;
-    let index=teachers.findIndex((teacher)=>{
-        return teacher.id===id
-    });
-    teachers[index]=Object.assign({},req.body)
-    fs.writeFileSync("teacher.json", JSON.stringify(teachers), "utf-8");
- res.send("Updated");
-}
-
-
-const  deleteTeacherById =(req,res)=>{
-    const id = +req.params.id
-    let index =  teachers.findIndex((teacher)=>{
-        return teacher.id ===id
-    })
-    teachers.splice(index,1)
-    fs.writeFileSync("teacher.json",JSON.stringify(teachers),'utf-8');
-      res.send("Deleted");
-    
-}
-
-
-const  updateBulkteacherById =(req,res)=>{
-    let body = req.body;
-    for(let teacher of body){
-        let  id =  teacher.id
-        let index = teachers.findIndex((teacher)=>{
-            return teacher.id === id
-        })
-        teachers[index]= teacher
-    }
-    fs.writeFileSync("teacher.json",JSON.stringify(teachers),'utf-8');
-    res.send("done")
-}
-
-
-module.exports={
-    getAllTeacher,createTeacher,createteacherBulk,
-    getTeacherByID,updateTeacherById,deleteTeacherById,
-    updateBulkteacherById
-}
-
-
-
-
